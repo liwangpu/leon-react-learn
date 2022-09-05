@@ -16,7 +16,6 @@ export default class Clock extends React.Component {
     // console.log(`clock ctor:`, this);
     // console.log(`ctor context:`, this.props);
     // console.log(`ctor context 1:`, context);
-    this.clockStart = this.clockStart.bind(this);
   }
 
   // componentDidMount() {
@@ -25,17 +24,17 @@ export default class Clock extends React.Component {
   // componentWillUnmount() {
   // }
 
-  clockStart() {
+  clockStart = () => {
     // console.log(`1:`, this);
-    this.setState({
-      start: true
-    });
-    // React.createContext('a1');
-    console.log(`clock:`, this);
+    // this.setState({
+    //   start: true
+    // });
+    // console.log(`clock:`, this);
+    this.context.destroy();
   }
 
   render() {
-    console.log(`context:`, this.context);
+    // console.log(`context:`, this.context);
     return (
       <div className='clock'>
         <div className='header'>

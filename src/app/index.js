@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import Clock from '../clock';
+import Card from '../card';
 import { faker } from '@faker-js/faker';
 import { CustomContext } from '../custom-context';
 
@@ -10,10 +11,14 @@ export default class App extends React.Component {
     super(props);
     // console.log(`ctor:`, this.props);
     const clocks = [];
+
     for (let i = 0; i <= 5; i++) {
+      const id = faker.datatype.uuid();
+      const name = faker.name.fullName();
       clocks.push({
-        id: faker.datatype.uuid(),
-        name: faker.name.fullName()
+        id,
+        name,
+        destroy: () => { this.deleteClock(id) }
       });
     }
     this.state = {
@@ -23,10 +28,14 @@ export default class App extends React.Component {
     console.log(`title:`, this.state.clocks);
   }
 
-  addClock() {
+  addClock = () => {
     return (
       <div>左边</div>
     );
+  }
+
+  deleteClock = (id) => {
+    console.log(`delete clock:`, id);
   }
 
   clockList() {
@@ -44,7 +53,12 @@ export default class App extends React.Component {
           <Clock />
         </CustomContext.Provider> */}
 
-        {this.clockList()}
+        {/* {this.clockList()} */}
+
+        <Card >
+          <div>ksdjflsdf</div>
+          <div>lsdfjlsdkfjdslfjdsfl</div>
+        </Card>
       </div>
     );
   }
