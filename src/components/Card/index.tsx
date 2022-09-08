@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from './index.module.less';
-import { LayoutOutlined, FormOutlined } from '@ant-design/icons';
-import { Routes, Route, NavLink, Navigate } from "react-router-dom";
+
+const pref = 'card';
 
 type RefLearnState = {
 
@@ -15,8 +15,10 @@ export default class RefLearn extends React.Component<RefLearnState> {
 
   render(): React.ReactNode {
     return (
-      <div className={styles.App}>
-        ref
+      <div className={styles[pref]}>
+        <div className="header">
+          卡片
+        </div>
       </div>
     );
   }

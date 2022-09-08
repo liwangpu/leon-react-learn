@@ -1,0 +1,93 @@
+.tutorial-app {
+  display: flex;
+  height: 100%;
+
+  &>.navs {
+    width: 180px;
+    height: 100%;
+    padding: 0 0 12px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #1E1E28;
+    color: #fff;
+
+    &>p.title {
+      text-align: center;
+      padding: 4px 0 6px;
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: #1890FF;
+    }
+
+    .item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 32px;
+      padding: 0 12px 0 20px;
+      margin: 0 0 3px;
+      color: #fff;
+      overflow: hidden;
+      cursor: pointer;
+      -webkit-user-drag: none;
+      user-select: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 4px;
+        height: 0;
+        background-color: #1890FF;
+        transition: height 120ms;
+      }
+
+      &.active {
+        background-color: #272D33;
+        color: #1890FF;
+
+        &::after {
+          height: 100%;
+          background-color: #1890FF;
+        }
+      }
+
+      &:hover {
+        background-color: #272D33;
+
+        &>.operation {
+          display: flex;
+          background-color: #272D33;
+        }
+      }
+
+      &>.icon {
+        margin-right: 6px;
+      }
+
+      &>p {
+        flex: 1;
+        padding: 0 12px 0 0;
+        font-size: 12px;
+        font-weight: 400;
+        margin: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+      }
+
+    }
+  }
+
+  &>.page {
+    flex: 1;
+    padding: 20px;
+    overflow: hidden;
+  }
+}
