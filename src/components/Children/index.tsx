@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './index.module.less';
 import { faker } from '@faker-js/faker';
 
-const pref = 'children';
-
 type ChildrenProp = {
   value?: string;
 }
@@ -35,7 +33,7 @@ export default class Children extends React.Component<ChildrenProp, ChildrenStat
   render(): React.ReactNode {
     console.log(`children render`);
     return (
-      <div className={styles[pref]}>
+      <div className={styles['children']}>
         <p>Children {this.state.message}</p>
         <button onClick={this.changeState}>更新状态</button>
       </div>

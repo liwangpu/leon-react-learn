@@ -27,7 +27,7 @@ export default class DynamicTest extends React.Component<any, DynamicTestState> 
         </div>
         <div className={styles['content']}>
           <Parent title='P1' key="p1" />
-          <Parent title='P2' key="p2" />
+          {/* <Parent title='P2' key="p2" /> */}
         </div>
       </div>
     );

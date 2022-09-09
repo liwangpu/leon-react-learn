@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './index.module.less';
 import { faker } from '@faker-js/faker';
 
-const prefix = 'dynamic-test';
-
 type DynamicTestState = {
   bodyComponents: any[];
 }
@@ -41,7 +39,7 @@ export default class DynamicTest extends React.Component<any, DynamicTestState> 
 
   render(): React.ReactNode {
     return (
-      <div className={styles[prefix]}>
+      <div className={styles['dynamic-test']}>
         <button onClick={this.dynamicCreateCard}>点我加载</button>
         <div className="content">
 
