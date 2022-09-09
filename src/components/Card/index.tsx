@@ -3,13 +3,13 @@ import styles from './index.module.less';
 
 const pref = 'card';
 
-type RefLearnState = {
+type RefLearnProp = {
 
 }
 
-export default class RefLearn extends React.Component<RefLearnState> {
+export default class RefLearn extends React.Component<RefLearnProp> {
 
-  constructor(props: RefLearnState) {
+  constructor(props: RefLearnProp) {
     super(props);
   }
 

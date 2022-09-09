@@ -6,6 +6,7 @@ import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 const HookLearn = React.lazy(() => import('../HookLearn'));
 const DynamicTest = React.lazy(() => import('../DynamicTest'));
 const SubRoute = React.lazy(() => import('../SubRoute'));
+const Hierarchy = React.lazy(() => import('../Hierarchy'));
 
 export default () => {
 
@@ -16,6 +17,10 @@ export default () => {
         <NavLink to="dynamic-test" className="item">
           <FileOutlined className='icon' />
           <p>动态组件</p>
+        </NavLink >
+        <NavLink to="hierarchy" className="item">
+          <FileOutlined className='icon' />
+          <p>层级组件</p>
         </NavLink >
         <NavLink to="hooks" className="item">
           <FileOutlined className='icon' />
@@ -36,6 +41,11 @@ export default () => {
           <Route path="/dynamic-test" element={
             <Suspense fallback={<div>Loading...</div>}>
               <DynamicTest />
+            </Suspense>
+          } />
+          <Route path="/hierarchy" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Hierarchy />
             </Suspense>
           } />
           <Route path="/sub-route" element={
