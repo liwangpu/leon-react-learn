@@ -3,10 +3,34 @@ import './index.less';
 import { FileOutlined } from '@ant-design/icons';
 import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 
-const HookLearn = React.lazy(() => import('../HookLearn'));
-const DynamicTest = React.lazy(() => import('../DynamicTest'));
-const SubRoute = React.lazy(() => import('../SubRoute'));
-const Hierarchy = React.lazy(() => import('../Hierarchy'));
+// import CounterByRedux from '../../components/CounterByRedux';
+
+const routes: { title: string; path: string; component: LazyExoticComponent<any>; list?: boolean; }[] = [
+  {
+    title: 'Hook',
+    path: 'hooks',
+    list: true,
+    component: React.lazy(() => import('../HookLearn'))
+  },
+  {
+    title: 'HOC',
+    path: 'hoc',
+    list: true,
+    component: React.lazy(() => import('../HocLearn'))
+  },
+  {
+    title: 'Redux',
+    path: 'redux',
+    list: true,
+    component: React.lazy(() => import('../ReduxTest'))
+  },
+  {
+    title: '层级组件',
+    path: 'hierarchy',
+    list: true,
+    component: React.lazy(() => import('../Hierarchy'))
+  },
+];
 
 const routes: { title: string; path: string; component: LazyExoticComponent<any>; list?: boolean; }[] = [
   {
@@ -41,6 +65,7 @@ export default () => {
 
   return (
     <div className='tutorial-app'>
+      {/* <CounterByRedux /> */}
       <div className="navs">
         <p className="title">React学习</p>
         {routerLinks()}

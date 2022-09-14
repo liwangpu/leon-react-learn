@@ -26,7 +26,11 @@ export default class Children extends React.Component<ChildrenProp, ChildrenStat
   //   console.log(`children--getSnapshotBeforeUpdate`, props);
   // }
 
-  componentDidUpdate() {
+  componentDidMount(): void {
+    console.log(`children--componentDidMount`);
+  }
+
+  componentDidUpdate(): void {
     console.log(`children--componentDidUpdate`);
   }
 
