@@ -18,7 +18,7 @@ import { ReactReduxContext } from 'react-redux';
  *   main goal, get access to the store object.
  */
 export const withReducer = (key, reducer) => WrappedComponent => {
-  const Extended = (props, context) => {
+  const Extended = (props) => {
     const reduxCtx = useContext(ReactReduxContext);
     // Here's where we add the new reducer.
     // See initilizeStore for details on how this works.
