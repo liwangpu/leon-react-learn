@@ -1,4 +1,4 @@
-import { withReducer } from '../../stores';
+import { withReducer } from '../../reduxStore';
 import { useSelector, useDispatch } from 'react-redux';
 import reducer, { increment } from './counterStore';
 import styles from './index.module.less';
