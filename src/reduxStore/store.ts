@@ -2,25 +2,15 @@ import { combineReducers } from "redux";
 import { configureStore, createSlice, EnhancedStore } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface RootStoreState {
-
-}
-
-const initialState: RootStoreState = {
-
-}
-
-const rootStoreSlice = createSlice({
-  name: 'root',
-  initialState,
-  reducers: {
-
-  },
-})
 
 const createReducer = (asyncReducers?: any) => {
   let reducers = {
-    [rootStoreSlice.name]: rootStoreSlice.reducer
+    root: function (state, action) {
+      if (state == null) {
+        state = {};
+      }
+      return state;
+    }
   };
   if (asyncReducers) {
     reducers = { ...reducers, ...asyncReducers };
@@ -29,28 +19,33 @@ const createReducer = (asyncReducers?: any) => {
   return combineReducers(reducers);
 }
 
-interface EnhancedStoreExtension {
+interface EnhancedStoreExtension extends EnhancedStore {
   asyncReducers: { [key: string]: any };
   injectReducer: (key: string, reducer: { [key: string]: any }) => EnhancedStore;
 };
 
 
-export const store: EnhancedStore & EnhancedStoreExtension = configureStore({
+export const store = configureStore({
   reducer: createReducer(),
   devTools: true
-}) as any;
+});
 // Create an object for any later reducers
-store.asyncReducers = {};
+
+const storeExt: EnhancedStoreExtension = store as any;
+storeExt.asyncReducers = {};
 
 // Creates a convenient method for adding reducers later
 // See withReducer.js for this in use.
-store.injectReducer = (key, reducer) => {
+storeExt.injectReducer = (key, reducer) => {
   // Updates the aysncReducers object. This ensures we don't remove any old
   // reducers when adding new ones.
-  store.asyncReducers[key] = reducer;
+  storeExt.asyncReducers[key] = reducer;
   // This is the key part: replaceReducer updates the reducer
   // See rootReducer.createReducer for more details, but it returns a function.
-  store.replaceReducer(createReducer(store.asyncReducers));
-  return store;
+  storeExt.replaceReducer(createReducer(storeExt.asyncReducers));
+  return storeExt;
 };
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 

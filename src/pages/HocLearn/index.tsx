@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { faker } from '@faker-js/faker';
 import styles from './index.module.less';
-import FullLifeCycle from '../../components/FullLifeCycle';
-import LoggerWrapper from '../../components/LoggerWrapper';
+import Counter from '../../components/Counter';
+// import FullLifeCycle from '../../components/FullLifeCycle';
+// import LoggerWrapper from '../../components/LoggerWrapper';
 
-const LifeCycleWithLogger=LoggerWrapper(FullLifeCycle);
+// const LifeCycleWithLogger=LoggerWrapper(FullLifeCycle);
 
 export default () => {
 
@@ -18,7 +19,7 @@ export default () => {
         <button onClick={() => setCardState(!cardState)}>切换Card显隐状态</button> */}
       </div>
       <div className={styles['content']}>
-        <LifeCycleWithLogger />
+        <Counter />
       </div>
     </div>
   );

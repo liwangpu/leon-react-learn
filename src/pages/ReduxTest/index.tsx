@@ -1,25 +1,21 @@
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import styles from './index.module.less';
-import CounterByRedux from '../../components/CounterByRedux';
 
 export default () => {
 
   return (
     <div className={styles['redux-test']}>
       <div className={styles['navs']}>
-        <div className={styles['item']}>
-          {/* <NavLink to='' className="item">
-            <p>{r.title}</p>
-          </NavLink > */}
-        </div>
+        <NavLink to='/app/redux/counter' className={styles['item']}>
+          <p>Counter</p>
+        </NavLink >
+        <NavLink to='/app/redux/page-list' className={styles['item']}>
+          <p>Page List</p>
+        </NavLink >
       </div>
       <div className={styles['content']}>
-
+        <Outlet />
       </div>
-      {/* <CounterByRedux /> */}
-      {/* <DynamicModuleLoader modules={[getUsersModule()]}>
-      
-      </DynamicModuleLoader> */}
     </div>
   );
 }

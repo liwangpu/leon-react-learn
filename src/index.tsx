@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom/client';
-import React, { LazyExoticComponent, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import './index.less';
 import 'antd/dist/antd.less';
 import App from './pages/App';
-import { BrowserRouter, createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { store } from './reduxStore';
 
@@ -11,6 +11,8 @@ const HookLearn = React.lazy(() => import('./pages/HookLearn'));
 const HocLearn = React.lazy(() => import('./pages/HocLearn'));
 const ReduxTest = React.lazy(() => import('./pages/ReduxTest'));
 const Hierarchy = React.lazy(() => import('./pages/Hierarchy'));
+const Counter = React.lazy(() => import('./pages/Counter'));
+const PageList = React.lazy(() => import('./pages/PageList'));
 
 function WrapperSuspense(WrappedComponent: React.ComponentType) {
   return (
@@ -20,13 +22,10 @@ function WrapperSuspense(WrappedComponent: React.ComponentType) {
   )
 }
 
-
-
 const router = createBrowserRouter([
   {
     path: "app",
     element: <App />,
-    // loader
     children: [
       {
         path: 'hooks',
@@ -38,17 +37,27 @@ const router = createBrowserRouter([
       },
       {
         path: 'redux',
-        element: WrapperSuspense(ReduxTest)
+        element: WrapperSuspense(ReduxTest),
+        children: [
+          {
+            path: 'counter',
+            element: WrapperSuspense(Counter)
+          },
+          {
+            path: 'page-list',
+            element: WrapperSuspense(PageList)
+          }
+        ]
       },
       {
         path: 'hierarchy',
         element: WrapperSuspense(Hierarchy)
-      }
+      },
     ]
   },
   {
     path: "*",
-    element: <Navigate to="/app" replace />,
+    element: <Navigate to="/app/hooks" replace />,
   },
 ]);
 
@@ -62,7 +71,3 @@ root.render(
   </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();

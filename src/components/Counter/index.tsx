@@ -8,9 +8,9 @@ export default () => {
     console.log(`effect work:`,);
 
     return () => {
-      console.log(`card des:`,);
+      console.log(`counter destroy`);
     };
-  }, []);
+  });
   return (
     <div className={styles['counter']}>
       <div className={styles['header']}>
@@ -18,7 +18,7 @@ export default () => {
       </div>
       <div className={styles['content']}>
         <p>当前点击了{count}次</p>
-        <FullLifeCycle />
+        {/* <FullLifeCycle /> */}
       </div>
     </div>
   );

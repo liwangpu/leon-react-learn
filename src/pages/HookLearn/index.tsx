@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { faker } from '@faker-js/faker';
 import styles from './index.module.less';
-import Counter from '../../components/Counter';
 
 export default () => {
 
@@ -17,7 +16,7 @@ export default () => {
       <div className={styles['content']}>
         <p>{title}</p>
         {cardState && (
-          <Counter />
+          <div>我是卡片</div>
         )}
       </div>
     </div>
