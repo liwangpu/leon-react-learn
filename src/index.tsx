@@ -46,7 +46,11 @@ const router = createBrowserRouter([
           {
             path: 'computer-config-panel',
             element: WrapperSuspense(PageList)
-          }
+          },
+          {
+            index: true,
+            element: <Navigate to="counter" replace />,
+          },
         ]
       },
       {
