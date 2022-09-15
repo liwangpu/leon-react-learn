@@ -1,40 +1,61 @@
-import { useContext } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef } from "react";
 import { object } from "prop-types";
 import { ReactReduxContext } from 'react-redux';
+import { Slice } from '@reduxjs/toolkit';
+import { EnhancedStoreExtension } from './store';
 
-/**
- * HOC for adding dynamic reducers to the global store.
- * 
- * Typical usage:
- *   export default withReducer('myComponent', reducer)(MyComponent)
- * 
- * Thoughts:
- *   This uses Context which has all of the warnings in the React
- *   docs to not use, but it's still documented and works here.
- *   If context seems like a bad idea, I *think* you could instead
- *   use react-redux.connect here instead. Once connected, this
- *   HOC would have access to store as a prop. Once you have
- *   access to store, you have access to injectReducer. That's the
- *   main goal, get access to the store object.
- */
-export const withReducer = (key, reducer) => WrappedComponent => {
-  const Extended = (props) => {
-    const reduxCtx = useContext(ReactReduxContext);
-    // Here's where we add the new reducer.
-    // See initilizeStore for details on how this works.
-    (reduxCtx.store as any).injectReducer(key, reducer);
+// export const withReducer = (key, slice: Slice) => WrappedComponent => {
+//   const Extended = (props) => {
+//     const reduxCtx: { store: EnhancedStoreExtension } = useContext(ReactReduxContext) as any;
+//     // reduxCtx.store.registry(key, slice.reducer);
 
-    // Now just give back the original component as-is.
-    return (
-      <WrappedComponent {...props} />
-    );
-  };
+//     const ref = useRef(false);
+//     if (!ref.current) {
+//       ref.current = true;
+//       reduxCtx.store.registry(key, slice.reducer);
+//       console.log(`ref:`,);
+//     }
+//     // useLayoutEffect(() => {
+//     //   reduxCtx.store.registry(key, slice.reducer);
+//     //   console.log(`parent useLayoutEffect`);
+//     // }, []);
 
-  // To use context, you must define contextTypes
-  // https://reactjs.org/docs/context.html
-  Extended.contextTypes = {
-    store: object
-  };
-  return Extended;
-};
+//     useEffect(() => {
+//       // reduxCtx.store.registry(key, slice.reducer);
+//       // console.log(`registry`);
+//       return () => {
+//         reduxCtx.store.unRegistry(key);
+//       };
+//     }, []);
+
+//     return (
+//       <WrappedComponent {...props} />
+//     );
+//   };
+
+//   Extended.contextTypes = {
+//     store: object
+//   };
+//   return Extended;
+// };
+
+export const withReducer = (key, slice: Slice) => WrappedComponent => {
+  return class extends React.Component {
+    static contextType: React.Context<{ store: EnhancedStoreExtension }> = ReactReduxContext as any;
+    constructor(props: any, cxt) {
+      super(props);
+      cxt.store.registry(key, slice.reducer);
+    }
+
+    componentWillUnmount(): void {
+      (this.context as any).store.unRegistry(key);
+    }
+
+    render() {
+      return (
+        <WrappedComponent {...this.props} />
+      );
+    }
+  }
+}
 

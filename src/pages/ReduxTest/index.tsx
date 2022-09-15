@@ -1,19 +1,27 @@
+import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styles from './index.module.less';
+import ConfigPanel from '../ConfigPanel';
 
 export default () => {
-
+  // const [count, setCount] = useState(1);
+  // const test = () => {
+  //   setCount(count + 1);
+  //   console.log(`title:`,);
+  // }
   return (
     <div className={styles['redux-test']}>
+      {/* <button onClick={test}>测试</button> */}
       <div className={styles['navs']}>
         <NavLink to='/app/redux/counter' className={styles['item']}>
           <p>Counter</p>
         </NavLink >
-        <NavLink to='/app/redux/page-list' className={styles['item']}>
-          <p>Page List</p>
+        <NavLink to='/app/redux/computer-config-panel' className={styles['item']}>
+          <p>Computer Config Panel</p>
         </NavLink >
       </div>
       <div className={styles['content']}>
+        {/* <ConfigPanel/> */}
         <Outlet />
       </div>
     </div>

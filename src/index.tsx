@@ -12,7 +12,7 @@ const HocLearn = React.lazy(() => import('./pages/HocLearn'));
 const ReduxTest = React.lazy(() => import('./pages/ReduxTest'));
 const Hierarchy = React.lazy(() => import('./pages/Hierarchy'));
 const Counter = React.lazy(() => import('./pages/Counter'));
-const PageList = React.lazy(() => import('./pages/PageList'));
+const PageList = React.lazy(() => import('./pages/ConfigPanel'));
 
 function WrapperSuspense(WrappedComponent: React.ComponentType) {
   return (
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             element: WrapperSuspense(Counter)
           },
           {
-            path: 'page-list',
+            path: 'computer-config-panel',
             element: WrapperSuspense(PageList)
           }
         ]
@@ -64,6 +64,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+// const store = StoreManager.getInstance().createStore({
+//   devTools: true
+// });
 
 root.render(
   <Provider store={store}>

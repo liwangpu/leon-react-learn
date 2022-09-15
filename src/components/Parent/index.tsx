@@ -4,7 +4,7 @@ import Children from '../Children';
 import { faker } from '@faker-js/faker';
 
 type ParentProp = {
-  title: string;
+  title?: string;
 }
 
 type ParentState = {
