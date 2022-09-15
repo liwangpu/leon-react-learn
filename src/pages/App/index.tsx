@@ -23,6 +23,10 @@ const routes: { title: string; path: string }[] = [
     title: 'Context',
     path: '/app/context'
   },
+  {
+    title: '生命周期',
+    path: '/app/life-cycle'
+  },
 ];
 
 export default function App(props: any): JSX.Element {

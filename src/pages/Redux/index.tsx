@@ -3,14 +3,14 @@ import { NavLink, Outlet } from 'react-router-dom';
 import styles from './index.module.less';
 import ConfigPanel from '../ConfigPanel';
 
-export default function ReduxLearn(props: any): JSX.Element {
+export default function Redux(props: any): JSX.Element {
   // const [count, setCount] = useState(1);
   // const test = () => {
   //   setCount(count + 1);
   //   console.log(`title:`,);
   // }
   return (
-    <div className={styles['redux-test']}>
+    <div className={styles['redux']}>
       {/* <button onClick={test}>测试</button> */}
       <div className={styles['navs']}>
         <NavLink to='/app/redux/counter' className={styles['item']}>

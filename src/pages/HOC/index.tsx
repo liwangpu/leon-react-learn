@@ -7,13 +7,13 @@ import Counter from '../../components/Counter';
 
 // const LifeCycleWithLogger=LoggerWrapper(FullLifeCycle);
 
-export default function HOCLearn(props: any): JSX.Element {
+export default function HOC(props: any): JSX.Element {
 
   // const [cardState, setCardState] = useState(true);
   // const [title, setTitle] = useState(faker.name.fullName());
 
   return (
-    <div className={styles['hoc-learn']}>
+    <div className={styles['hoc']}>
       <div className={styles['header']}>
         {/* <button onClick={() => setTitle(faker.name.fullName())}>切换标题</button>
         <button onClick={() => setCardState(!cardState)}>切换Card显隐状态</button> */}

@@ -7,17 +7,18 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import { Provider } from 'react-redux';
 import { store } from './reduxStore';
 
-const HookLearn = React.lazy(() => import('./pages/HookLearn'));
-const HocLearn = React.lazy(() => import('./pages/HOCLearn'));
-const ReduxTest = React.lazy(() => import('./pages/ReduxLearn'));
-const Hierarchy = React.lazy(() => import('./pages/Hierarchy'));
-const Counter = React.lazy(() => import('./pages/Counter'));
-const PageList = React.lazy(() => import('./pages/ConfigPanel'));
-const ContextLearn = React.lazy(() => import('./pages/ContextLearn'));
+const Hook = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Hook'));
+const HOC = React.lazy(() => import(/* webpackPrefetch:true */'./pages/HOC'));
+const Redux = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Redux'));
+const Hierarchy = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Hierarchy'));
+const Counter = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Counter'));
+const ConfigPanel = React.lazy(() => import(/* webpackPrefetch:true */'./pages/ConfigPanel'));
+const Context = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Context'));
+const LifeCycle = React.lazy(() => import(/* webpackPrefetch:true */'./pages/LifeCycle'));
 
 function WrapperSuspense(WrappedComponent: React.ComponentType) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div></div>}>
       <WrappedComponent />
     </Suspense>
   )
@@ -30,15 +31,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'hooks',
-        element: WrapperSuspense(HookLearn)
+        element: WrapperSuspense(Hook)
       },
       {
         path: 'hoc',
-        element: WrapperSuspense(HocLearn)
+        element: WrapperSuspense(HOC)
       },
       {
         path: 'redux',
-        element: WrapperSuspense(ReduxTest),
+        element: WrapperSuspense(Redux),
         children: [
           {
             path: 'counter',
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'computer-config-panel',
-            element: WrapperSuspense(PageList)
+            element: WrapperSuspense(ConfigPanel)
           },
           {
             index: true,
@@ -60,8 +61,12 @@ const router = createBrowserRouter([
       },
       {
         path: 'context',
-        element: WrapperSuspense(ContextLearn)
+        element: WrapperSuspense(Context)
       },
+      {
+        path: 'life-cycle',
+        element: WrapperSuspense(LifeCycle)
+      }
     ]
   },
   {

@@ -9,12 +9,12 @@ interface ContextAImplement {
 const ContextA = React.createContext<ContextAImplement>(null);
 const ContextB = React.createContext<string>(null);
 
-export default function ContextLearn(props: any): JSX.Element {
+export default function Context(props: any): JSX.Element {
 
   const [title, setTitle] = useState(faker.name.fullName());
 
   return (
-    <div className={styles['context-learn']}>
+    <div className={styles['context']}>
       <div className={styles['header']}>
         <button onClick={() => setTitle(faker.name.fullName())}>切换标题</button>
         {/* <button onClick={() => setTitle(faker.name.fullName())}>切换标题</button>
