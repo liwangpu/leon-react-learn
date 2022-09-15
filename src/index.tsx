@@ -8,11 +8,12 @@ import { Provider } from 'react-redux';
 import { store } from './reduxStore';
 
 const HookLearn = React.lazy(() => import('./pages/HookLearn'));
-const HocLearn = React.lazy(() => import('./pages/HocLearn'));
-const ReduxTest = React.lazy(() => import('./pages/ReduxTest'));
+const HocLearn = React.lazy(() => import('./pages/HOCLearn'));
+const ReduxTest = React.lazy(() => import('./pages/ReduxLearn'));
 const Hierarchy = React.lazy(() => import('./pages/Hierarchy'));
 const Counter = React.lazy(() => import('./pages/Counter'));
 const PageList = React.lazy(() => import('./pages/ConfigPanel'));
+const ContextLearn = React.lazy(() => import('./pages/ContextLearn'));
 
 function WrapperSuspense(WrappedComponent: React.ComponentType) {
   return (
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: 'hierarchy',
         element: WrapperSuspense(Hierarchy)
+      },
+      {
+        path: 'context',
+        element: WrapperSuspense(ContextLearn)
       },
     ]
   },

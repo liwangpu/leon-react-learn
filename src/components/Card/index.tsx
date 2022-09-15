@@ -1,6 +1,6 @@
 import styles from './index.module.less';
 
-export default () => {
+export default function Card(props: any): JSX.Element {
   return (
     <div className={styles['hook-card']}>
       <div className="header">

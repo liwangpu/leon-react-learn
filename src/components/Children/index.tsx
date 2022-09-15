@@ -22,7 +22,7 @@ export default class Children extends React.Component<ChildrenProp, ChildrenStat
     this.setState({ message: faker.random.words(2) });
   }
 
-  // getSnapshotBeforeUpdate(props: any) {
+  // getSnapshotBeforeUpdate(props: any): JSX.Element {
   //   console.log(`children--getSnapshotBeforeUpdate`, props);
   // }
 

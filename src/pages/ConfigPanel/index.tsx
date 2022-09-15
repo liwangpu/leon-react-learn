@@ -7,7 +7,7 @@ import { Button } from 'antd';
 import { store, addComputer, selectComputers } from './computerStore';
 import Computer from '../../components/Computer';
 
-function ConfigPanel(props: any) {
+function ConfigPanel(props: any): JSX.Element {
 
   const dispatch = useDispatch();
   const computers = useSelector(selectComputers);

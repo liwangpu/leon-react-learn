@@ -1,5 +1,5 @@
 import './index.less';
-import { FileOutlined } from '@ant-design/icons';
+import { ReadOutlined } from '@ant-design/icons';
 import { NavLink, Outlet } from "react-router-dom";
 
 const routes: { title: string; path: string }[] = [
@@ -19,13 +19,17 @@ const routes: { title: string; path: string }[] = [
     title: '层级组件',
     path: '/app/hierarchy'
   },
+  {
+    title: 'Context',
+    path: '/app/context'
+  },
 ];
 
-export default () => {
+export default function App(props: any): JSX.Element {
 
   const routerLinks = () => routes.map(r => (
     <NavLink key={r.title} to={r.path} className="item">
-      <FileOutlined className='icon' />
+      <ReadOutlined className='icon' />
       <p>{r.title}</p>
     </NavLink >
   ));

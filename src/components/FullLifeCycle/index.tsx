@@ -25,7 +25,7 @@ export default class FullLifeCycle extends React.Component<ChildrenProp, Childre
     this.setState({ title: faker.random.words(2) });
   }
 
-  // getSnapshotBeforeUpdate(props: any) {
+  // getSnapshotBeforeUpdate(props: any): JSX.Element {
   //   console.log(`children--getSnapshotBeforeUpdate`, props);
   // }
 

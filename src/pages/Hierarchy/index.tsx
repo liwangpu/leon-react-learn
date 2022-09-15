@@ -26,7 +26,7 @@ export default class DynamicTest extends React.Component<any, DynamicTestState> 
           <button onClick={this.changeState}>更新状态</button>
         </div>
         <div className={styles['content']}>
-          <Parent  />
+          <Parent />
           {/* <Parent title='P2' key="p2" /> */}
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { faker } from '@faker-js/faker';
 import styles from './index.module.less';
 
-export default () => {
+export default function HookLearn(props: any): JSX.Element {
 
   const [cardState, setCardState] = useState(true);
   const [title, setTitle] = useState(faker.name.fullName());

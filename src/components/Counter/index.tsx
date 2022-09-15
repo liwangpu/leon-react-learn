@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './index.module.less';
 import FullLifeCycle from '../FullLifeCycle';
 
-export default () => {
+export default function Counter(props: any): JSX.Element {
   const [count, setCount] = useState(0);
   useEffect(() => {
     console.log(`effect work:`,);

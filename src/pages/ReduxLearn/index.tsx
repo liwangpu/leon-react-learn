@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import styles from './index.module.less';
 import ConfigPanel from '../ConfigPanel';
 
-export default () => {
+export default function ReduxLearn(props: any): JSX.Element {
   // const [count, setCount] = useState(1);
   // const test = () => {
   //   setCount(count + 1);

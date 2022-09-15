@@ -7,7 +7,7 @@ import Counter from '../../components/Counter';
 
 // const LifeCycleWithLogger=LoggerWrapper(FullLifeCycle);
 
-export default () => {
+export default function HOCLearn(props: any): JSX.Element {
 
   // const [cardState, setCardState] = useState(true);
   // const [title, setTitle] = useState(faker.name.fullName());
