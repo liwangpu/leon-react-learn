@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { faker } from '@faker-js/faker';
 import styles from './index.module.less';
+// import { object } from 'prop-types';
 
 interface ContextAImplement {
   title: string;
@@ -55,7 +56,22 @@ function SecondLayer(props: any): JSX.Element {
   return (
     <div style={{ border: '1px solid #cacdd1', padding: '12px' }}>
       <p>第二层级</p>
+      <ThirdLayer />
     </div>
   );
+}
+
+class ThirdLayer extends React.Component {
+  // static contextTypes={
+
+  // }
+  render(): React.ReactNode {
+    console.log(`third layer:`,this.context);
+    return (
+      <div style={{ border: '1px solid #cacdd1', padding: '12px' }}>
+        <p>第三层级</p>
+      </div>
+    );
+  }
 }
 
