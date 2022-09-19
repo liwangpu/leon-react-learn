@@ -31,11 +31,12 @@ export default class DynamicTest extends React.Component<any, DynamicTestState> 
         <div className={styles['header']}>
           <p>Hierarchy</p>
           <button onClick={this.changeState}>更新状态</button>
-          <button onClick={this.toggleParentVisible}>切换Parent显隐</button>
+          {/* <button onClick={this.toggleParentVisible}>切换Parent显隐</button> */}
         </div>
         <div className={styles['content']}>
-          {this.state.showParent && <Parent />}
-          {/* <Parent title='P2' key="p2" /> */}
+          {/* {this.state.showParent && <Parent />} */}
+          <Parent title='P1' key="p1" />
+          <Parent title='P2' key="p2" />
         </div>
       </div>
     );

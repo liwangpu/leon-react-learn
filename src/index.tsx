@@ -12,7 +12,7 @@ const HOC = React.lazy(() => import(/* webpackPrefetch:true */'./pages/HOC'));
 const Redux = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Redux'));
 const Hierarchy = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Hierarchy'));
 const Counter = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Counter'));
-const ConfigPanel = React.lazy(() => import(/* webpackPrefetch:true */'./pages/ConfigPanel'));
+const ConfigPanel = React.lazy(() => import(/* webpackPrefetch:true */'./pages/ComponentConfigPanel'));
 const Context = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Context'));
 const LifeCycle = React.lazy(() => import(/* webpackPrefetch:true */'./pages/LifeCycle'));
 
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
           },
           {
             index: true,
-            element: <Navigate to="counter" replace />,
+            element: <Navigate to="computer-config-panel" replace />,
           },
         ]
       },
