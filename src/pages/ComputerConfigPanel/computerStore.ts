@@ -9,12 +9,16 @@ export interface ComputerStoreState {
 
 const initialState: ComputerStoreState = {
   version: 'default',
-  computers: [],
+  computers: [
+    { id: 'a', title: '戴尔' },
+    { id: 'b', title: '外星人' },
+    { id: 'c', title: '苹果' },
+  ],
   configurations: {}
 }
 
-export const addComputer = createAction<string>('addComputer');
-export const setVerion = createAction<string>('setVerion');
+export const updateComputer = createAction<{ id: string, title: string }>('computerStore/updateComputer');
+export const setVerion = createAction<string>('computerStore/setVerion');
 
 export const store = createSlice({
   name: 'computerStore',
@@ -22,9 +26,9 @@ export const store = createSlice({
   reducers: {
   },
   extraReducers: builder => {
-    builder.addCase(addComputer, (state, action) => {
-      const id = action.payload;
-      state.computers[id] = { id };
+    builder.addCase(updateComputer, (state, action) => {
+      const computer = state.computers.find(c => c.id === action.payload.id);
+      computer.title = action.payload.title;
     });
     builder.addCase(setVerion, (state, action) => {
       state.version = action.payload;
@@ -33,9 +37,9 @@ export const store = createSlice({
 });
 
 interface State {
-  computerConfigStore: ComputerStoreState;
+  computerStore: ComputerStoreState;
 }
-export const selectStore = (state: State) => state?.computerConfigStore || {};
+export const selectStore = (state: State) => state?.computerStore || {};
 export const selectVersion = createSelector(selectStore, (state: ComputerStoreState) => state?.version);
-export const selectComputers = createSelector(selectStore, (state: ComputerStoreState) => state?.computers || {});
+export const selectComputers = createSelector(selectStore, (state: ComputerStoreState) => state?.computers || []);
 export const selectConfigurations = createSelector(selectStore, (state: ComputerStoreState) => state?.configurations || {});

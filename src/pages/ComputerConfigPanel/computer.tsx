@@ -1,40 +1,52 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addComputer, selectComputers } from './computerStore';
-import { Button } from 'antd';
-import { faker } from '@faker-js/faker';
+import { updateComputer, selectComputers } from './computerStore';
+import { ChangeEvent, memo, useMemo, useState } from 'react';
+import * as _ from 'lodash';
 
-export default function Computer(props: any): JSX.Element {
-  const computers = useSelector(selectComputers);
-  const computerIds = computers ? Object.keys(computers) : [];
+
+
+function Computer(props: { computer: { id: string; title: string } }): JSX.Element {
+
+  const [title, setTitle] = useState(props.computer.title);
   const dispatch = useDispatch();
-  // const computers = useSelector(selectComputers);
-  // const computerIds = computers ? Object.keys(computers) : [];
-  // console.log(`computers:`, computerIds);
 
+  const updateToRedux = useMemo(
+    () => _.debounce((value) => {
+      dispatch(updateComputer({ id: props.computer.id, title: value }));
+    }, 1000),
+    []
+  );
+  // const titleChange = _.debounce(val => {
+  //   console.log(`search:`, val);
+  // }, 1000);
 
-  const onAddComputer = () => {
-    dispatch(addComputer(faker.datatype.uuid()));
+  const onTitleChange = (e: ChangeEvent<any>) => {
+    const value = e.target.value;
+    setTitle(value);
+    updateToRedux(value);
   };
 
-  // console.log(`computer basic render:`,);
-  // const computerBasicItems = () => {
-  //   return computerIds.map(id => computers[id]).map(cfg => (
-  //     <div key={cfg.id} className={styles['basic-item']}>
-  //       <p>ID:{cfg.id}</p>
-  //       {/* <p>标题:{cfg.title}</p> */}
-  //     </div>
-  //   ))
-  // };
+  const onTitleChangeToRedux = (e: ChangeEvent<any>) => {
+    const value = e.target.value;
+    dispatch(updateComputer({ id: props.computer.id, title: value }));
+  };
 
+  console.log(`computer render:`, props.computer.id);
   return (
     <div className='computer'>
-      {/* <div className={styles['header']}>
-        <span>电脑基础信息</span>
-        <Button type="primary" onClick={onAddComputer}>添加电脑</Button>
+      <div className="form-item">
+        <label>ID</label>
+        <span>{props.computer.id}</span>
       </div>
-      <div className={styles['content']}>
-        {computerBasicItems()}
-      </div> */}
+      <div className="form-item">
+        <label>标题</label>
+        {/* <input type="text" value={title} onChange={onTitleChange} /> */}
+
+        <input type="text" value={props.computer.title} onChange={onTitleChangeToRedux} />
+      </div>
     </div>
   );
 }
+
+// export default Computer;
+export default memo(Computer);

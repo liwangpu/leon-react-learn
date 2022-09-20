@@ -1,6 +1,7 @@
 import React, { memo, useMemo, useState } from 'react';
 import styles from './index.module.less';
 import { faker } from '@faker-js/faker';
+import produce from 'immer';
 
 interface ProfileType {
   name: string;
@@ -68,6 +69,12 @@ export default class ComponentUpdate extends React.Component<any, ComponentUpdat
     });
   }
 
+  updateProfileNameByMethod3(): void {
+    this.setState(produce(this.state, draft => {
+      draft.profile.age++;
+    }));
+  }
+
   render(): JSX.Element {
     console.log(`ComponentUpdate--render`,);
     return (
@@ -75,6 +82,7 @@ export default class ComponentUpdate extends React.Component<any, ComponentUpdat
         <div className={styles['header']}>
           <button onClick={() => this.updateProfileNameByMethod1()}>修改用户姓名--方法1</button>
           <button onClick={() => this.updateProfileNameByMethod2()}>修改用户姓名--方法2</button>
+          <button onClick={() => this.updateProfileNameByMethod3()}>修改用户姓名--方法3</button>
         </div>
         <div className={styles['content']}>
           <MemoProfile profile={this.state.profile} />
