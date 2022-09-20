@@ -5,14 +5,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './index.module.less';
 import { Button } from 'antd';
 import { store, addComputer, selectComputers, selectVersion, setVerion } from './computerStore';
-import ComputerBasic from './computerBasic';
+import Computer from './computer';
 
-function ComponentConfigPanel(props: any): JSX.Element {
+function ComputerConfigPanel(props: any): JSX.Element {
 
   return (
-    <div className={styles['page-list']}>
+    <div className={styles['computer-config-panel']}>
       <Version />
-      <ComputerBasic />
+      {/* <Computer /> */}
     </div>
   );
 }
@@ -31,4 +31,4 @@ function Version(props: any) {
   );
 }
 
-export default withReducer(store.name, store)(ComponentConfigPanel);
+export default withReducer(store.name, store)(ComputerConfigPanel);

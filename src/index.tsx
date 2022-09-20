@@ -12,9 +12,10 @@ const HOC = React.lazy(() => import(/* webpackPrefetch:true */'./pages/HOC'));
 const Redux = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Redux'));
 const Hierarchy = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Hierarchy'));
 const Counter = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Counter'));
-const ConfigPanel = React.lazy(() => import(/* webpackPrefetch:true */'./pages/ComponentConfigPanel'));
+const ConfigPanel = React.lazy(() => import(/* webpackPrefetch:true */'./pages/ComputerConfigPanel'));
 const Context = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Context'));
 const LifeCycle = React.lazy(() => import(/* webpackPrefetch:true */'./pages/LifeCycle'));
+const ComponentUpdate = React.lazy(() => import(/* webpackPrefetch:true */'./pages/ComponentUpdate'));
 
 function WrapperSuspense(WrappedComponent: React.ComponentType) {
   return (
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: 'life-cycle',
         element: WrapperSuspense(LifeCycle)
+      },
+      {
+        path: 'component-update',
+        element: WrapperSuspense(ComponentUpdate)
       }
     ]
   },

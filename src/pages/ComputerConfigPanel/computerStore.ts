@@ -3,13 +3,13 @@ import * as _ from 'lodash';
 
 export interface ComputerStoreState {
   version: string;
-  computers: { [id: string]: { [key: string]: any } };
+  computers: { id: string; title: string; }[];
   configurations: { [id: string]: { [key: string]: any } };
 }
 
 const initialState: ComputerStoreState = {
   version: 'default',
-  computers: {},
+  computers: [],
   configurations: {}
 }
 
@@ -17,7 +17,7 @@ export const addComputer = createAction<string>('addComputer');
 export const setVerion = createAction<string>('setVerion');
 
 export const store = createSlice({
-  name: 'computerConfigStore',
+  name: 'computerStore',
   initialState,
   reducers: {
   },

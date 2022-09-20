@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styles from './index.module.less';
-import ConfigPanel from '../ComponentConfigPanel';
+import ConfigPanel from '../ComputerConfigPanel';
 
 export default function Redux(props: any): JSX.Element {
   // const [count, setCount] = useState(1);

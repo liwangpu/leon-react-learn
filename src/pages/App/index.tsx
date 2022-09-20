@@ -27,6 +27,10 @@ const routes: { title: string; path: string }[] = [
     title: '生命周期',
     path: '/app/life-cycle'
   },
+  {
+    title: '组件更新',
+    path: '/app/component-update'
+  },
 ];
 
 export default function App(props: any): JSX.Element {
