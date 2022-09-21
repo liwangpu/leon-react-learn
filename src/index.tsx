@@ -16,6 +16,7 @@ const ConfigPanel = React.lazy(() => import(/* webpackPrefetch:true */'./pages/C
 const Context = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Context'));
 const LifeCycle = React.lazy(() => import(/* webpackPrefetch:true */'./pages/LifeCycle'));
 const ComponentUpdate = React.lazy(() => import(/* webpackPrefetch:true */'./pages/ComponentUpdate'));
+const Refs = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Refs'));
 
 function WrapperSuspense(WrappedComponent: React.ComponentType) {
   return (
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: 'component-update',
         element: WrapperSuspense(ComponentUpdate)
+      },
+      {
+        path: 'refs',
+        element: WrapperSuspense(Refs)
       }
     ]
   },

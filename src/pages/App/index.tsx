@@ -31,6 +31,10 @@ const routes: { title: string; path: string }[] = [
     title: '组件更新',
     path: '/app/component-update'
   },
+  {
+    title: 'Refs',
+    path: '/app/refs'
+  },
 ];
 
 export default function App(props: any): JSX.Element {
