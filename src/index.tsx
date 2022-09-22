@@ -17,6 +17,7 @@ const Context = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Conte
 const LifeCycle = React.lazy(() => import(/* webpackPrefetch:true */'./pages/LifeCycle'));
 const ComponentUpdate = React.lazy(() => import(/* webpackPrefetch:true */'./pages/ComponentUpdate'));
 const Refs = React.lazy(() => import(/* webpackPrefetch:true */'./pages/Refs'));
+const DynamicElement = React.lazy(() => import(/* webpackPrefetch:true */'./pages/DynamicElement'));
 
 function WrapperSuspense(WrappedComponent: React.ComponentType) {
   return (
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: 'refs',
         element: WrapperSuspense(Refs)
+      },
+      {
+        path: 'dynamic-element',
+        element: WrapperSuspense(DynamicElement)
       }
     ]
   },

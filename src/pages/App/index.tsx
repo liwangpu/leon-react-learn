@@ -35,6 +35,10 @@ const routes: { title: string; path: string }[] = [
     title: 'Refs',
     path: '/app/refs'
   },
+  {
+    title: '动态渲染',
+    path: '/app/dynamic-element'
+  },
 ];
 
 export default function App(props: any): JSX.Element {
