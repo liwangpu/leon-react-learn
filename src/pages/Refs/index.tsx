@@ -1,34 +1,37 @@
-import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle, useCallback } from 'react';
 import { faker } from '@faker-js/faker';
 import styles from './index.module.less';
 
 export default function Hook(props: any): JSX.Element {
 
-  const [cardVisible, setCardVisible] = useState(true);
+  const [title, setTitle] = useState('默认');
   const cardRef = useRef();
-  const funComponentRef = useRef<{ getTitle: Function }>();
+  const componentRef = useRef<{ getTitle: Function }>();
 
   const toggleVisible = () => {
     // setCardVisible(!cardVisible)
-    console.log(`ref:`, funComponentRef);
+    console.log(`ref:`, componentRef);
   };
 
   const registryRef = el => {
     console.log(`registry:`, el);
+    componentRef.current = el;
   };
 
   const triggerMethod = () => {
-    console.log(`funComponentRef:`, funComponentRef.current);
-    const title = funComponentRef.current?.getTitle();
+    // console.log(`funComponentRef:`, componentRef.current);
+    const title = componentRef.current?.getTitle();
     console.log(`com title:`, title);
   };
 
   return (
     <div className={styles['refs']}>
       <div className={styles['header']}>
-        <button onClick={triggerMethod}>获取组件标题</button>
+        <button onClick={() => setTitle(faker.name.fullName())}>更新当前组件标题</button>
+        <button onClick={triggerMethod}>获取子组件标题</button>
       </div>
       <div className={styles['content']}>
+        <h3>当前组件标题: {title}</h3>
         {/* {cardVisible && <Card ref={cardRef} />} */}
         <SimpleFuntionComponentWithRef ref={registryRef} />
         <SimpleClassComponentWithRef />
@@ -52,11 +55,15 @@ const CardWithRef = forwardRef(Card);
 
 function SimpleFuntionComponent(props: any, ref): JSX.Element {
   const [title, setTitle] = useState('默认');
+  const testGetTitle = useCallback(() => {
+    return title;
+  }, []);
   useImperativeHandle(ref, () => ({
     getTitle: () => {
       return title;
+      // return testGetTitle();
     }
-  }));
+  }), []);
   return (
     <div>
       <p>function component</p>
