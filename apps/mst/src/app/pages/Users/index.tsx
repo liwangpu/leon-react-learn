@@ -49,7 +49,7 @@ const store = UserStore.create({
   }
 })
 
-connectReduxDevtools(require("remotedev"), store)
+connectReduxDevtools(require("remotedev"), store);
 
 
 function Users(props: any): JSX.Element {

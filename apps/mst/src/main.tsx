@@ -4,6 +4,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import 'antd/dist/antd.less';
 
 import App from './app/app';
+import { rootStore } from './app/store';
 
 const Users = React.lazy(() => import('./app/pages/Users'));
 
@@ -18,7 +19,7 @@ function WrapperSuspense(WrappedComponent: React.ComponentType) {
 const router = createBrowserRouter([
   {
     path: "app",
-    element: <App />,
+    element: <App store={rootStore} />,
     children: [
       {
         path: 'users',

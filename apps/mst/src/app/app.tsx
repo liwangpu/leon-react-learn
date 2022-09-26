@@ -2,6 +2,9 @@ import './app.less';
 import { NavLink, Outlet } from "react-router-dom";
 import { ReadOutlined } from '@ant-design/icons';
 import { memo } from 'react';
+import { observer } from 'mobx-react-lite';
+import { Instance } from 'mobx-state-tree';
+import { RootStore } from './store';
 
 const routes: { title: string; path: string }[] = [
   {
@@ -13,7 +16,7 @@ const routes: { title: string; path: string }[] = [
 
 
 
-function App(props: any): JSX.Element {
+function App({ store }: { store: Instance<typeof RootStore> }): JSX.Element {
   const routerLinks = () => routes.map(r => (
     <NavLink key={r.title} to={r.path} className={({ isActive }) => isActive ? "item actived" : "item"}>
       <ReadOutlined className='icon' />
@@ -37,4 +40,4 @@ function App(props: any): JSX.Element {
   );
 }
 
-export default memo(App);
+export default memo(observer(App));
