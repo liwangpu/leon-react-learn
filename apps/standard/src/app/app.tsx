@@ -26,13 +26,15 @@ const routes: { title: string; path: string }[] = [
   },
 ];
 
-const App = memo((props: any) => {
-  const routerLinks = () => routes.map(r => (
-    <NavLink key={r.title} to={r.path} className={({ isActive }) => isActive ? "item actived" : "item"}>
-      <ReadOutlined className='icon' />
-      <p>{r.title}</p>
-    </NavLink >
-  ));
+const RouterLinks = routes.map(r => (
+  <NavLink key={r.title} to={r.path} className={({ isActive }) => isActive ? "item actived" : "item"}>
+    <ReadOutlined className='icon' />
+    <p>{r.title}</p>
+  </NavLink >
+));
+
+const App: React.FC = memo((props) => {
+
   return (
     <div className='tutorial-app'>
       <div className="navs">
@@ -40,7 +42,7 @@ const App = memo((props: any) => {
           <p className='title'>学习里程</p>
         </div>
         <div className="content">
-          {routerLinks()}
+          {RouterLinks}
         </div>
       </div>
       <div className="page">

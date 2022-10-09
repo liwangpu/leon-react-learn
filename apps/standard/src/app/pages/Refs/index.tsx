@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle, useCallback, memo } from 'react';
+import React, { useState, useRef, memo } from 'react';
 import { faker } from '@faker-js/faker';
 import styles from './index.module.less';
 
-const Refs = memo((props: any) => {
+const Refs: React.FC = memo(() => {
 
   const [title, setTitle] = useState('默认');
   const cardRef = useRef();
   const componentRef = useRef<{ getTitle: Function }>();
 
   const toggleVisible = () => {
-    // setCardVisible(!cardVisible)
     console.log(`ref:`, componentRef);
   };
 
@@ -19,7 +18,6 @@ const Refs = memo((props: any) => {
   };
 
   const triggerMethod = () => {
-    // console.log(`funComponentRef:`, componentRef.current);
     const title = componentRef.current?.getTitle();
     console.log(`com title:`, title);
   };
