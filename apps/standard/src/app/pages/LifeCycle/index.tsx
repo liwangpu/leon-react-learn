@@ -4,7 +4,7 @@ import styles from './index.module.less';
 
 
 
-export default class LifeCycle extends React.Component {
+export default class LifeCycle extends React.PureComponent {
 
   title = 'top';
   constructor(props: any) {

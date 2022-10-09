@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, memo } from 'react';
 import { faker } from '@faker-js/faker';
 import styles from './index.module.less';
 
-export default function Hook(props: any): JSX.Element {
+const Hook: React.FC = memo(() => {
 
   const [title, setTitle] = useState(faker.name.fullName());
+
+  const test = () => {
+
+  };
 
   return (
     <div className={styles['hook']}>
@@ -12,25 +16,10 @@ export default function Hook(props: any): JSX.Element {
         <button onClick={() => setTitle(faker.name.fullName())}>切换标题</button>
       </div>
       <div className={styles['content']}>
-        <p>{title}</p>
-        <NestedComponent title={title} />
+        <p>标题: {title}</p>
       </div>
     </div>
   );
-}
+});
 
-
-
-function NestedComponent(props: { title: string }) {
-
-  useEffect(() => {
-    console.log(`work:`,);
-  }, [props.title]);
-
-  return (
-    <div>
-      <p>Nested Component</p>
-      <p>{props.title}</p>
-    </div>
-  );
-}
+export default Hook;

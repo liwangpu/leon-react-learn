@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, memo } from 'react';
 import { faker } from '@faker-js/faker';
 import styles from './index.module.less';
-// import { object } from 'prop-types';
 
 interface ContextAImplement {
   title: string;
@@ -10,7 +9,7 @@ interface ContextAImplement {
 const ContextA = React.createContext<ContextAImplement>(null);
 const ContextB = React.createContext<string>(null);
 
-export default function Context(props: any): JSX.Element {
+const Context: React.FC = memo(() => {
 
   const [title, setTitle] = useState(faker.name.fullName());
 
@@ -31,9 +30,11 @@ export default function Context(props: any): JSX.Element {
       </div>
     </div>
   );
-}
+});
 
-function FirstLayer(props: any): JSX.Element {
+export default Context;
+
+const FirstLayer = (props: any) => {
   const cxtA = useContext(ContextA);
   const cxtB = useContext(ContextB);
   console.log(`first layer:`, cxtA);
@@ -48,7 +49,7 @@ function FirstLayer(props: any): JSX.Element {
   );
 }
 
-function SecondLayer(props: any): JSX.Element {
+const SecondLayer = (props: any) => {
   const cxtA = useContext(ContextA);
   const cxtB = useContext(ContextB);
   console.log(`second layer:`, cxtA);
@@ -61,12 +62,12 @@ function SecondLayer(props: any): JSX.Element {
   );
 }
 
-class ThirdLayer extends React.Component {
+class ThirdLayer extends React.PureComponent {
   // static contextTypes={
 
   // }
   render(): React.ReactNode {
-    console.log(`third layer:`,this.context);
+    console.log(`third layer:`, this.context);
     return (
       <div style={{ border: '1px solid #cacdd1', padding: '12px' }}>
         <p>第三层级</p>

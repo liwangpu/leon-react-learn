@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import { faker } from '@faker-js/faker';
 import styles from './index.module.less';
 // import FullLifeCycle from '../../components/FullLifeCycle';
@@ -6,7 +6,7 @@ import styles from './index.module.less';
 
 // const LifeCycleWithLogger=LoggerWrapper(FullLifeCycle);
 
-export default function HOC(props: any): JSX.Element {
+const HOC: React.FC = memo(() => {
   // console.log(`props:`, props);
   const [cardVisible, setCardVisible] = useState(true);
   const [title, setTitle] = useState(faker.name.fullName());
@@ -24,14 +24,7 @@ export default function HOC(props: any): JSX.Element {
       </div>
     </div>
   );
-}
+});
 
 
-function FCCard(props: any): JSX.Element {
-
-  return (
-    <div>
-
-    </div>
-  );
-}
+export default HOC;

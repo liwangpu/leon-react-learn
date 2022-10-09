@@ -26,10 +26,7 @@ const routes: { title: string; path: string }[] = [
   },
 ];
 
-
-
-
-function App(props: any): JSX.Element {
+const App = memo((props: any) => {
   const routerLinks = () => routes.map(r => (
     <NavLink key={r.title} to={r.path} className={({ isActive }) => isActive ? "item actived" : "item"}>
       <ReadOutlined className='icon' />
@@ -51,6 +48,6 @@ function App(props: any): JSX.Element {
       </div>
     </div>
   );
-}
+});
 
-export default memo(App);
+export default App;
