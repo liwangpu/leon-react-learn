@@ -11,6 +11,10 @@ const routes: { title: string; path: string }[] = [
     title: 'Users',
     path: '/app/users',
   },
+  {
+    title: 'Robot',
+    path: '/app/robot',
+  },
 ];
 
 

@@ -1,7 +1,7 @@
 import { memo, useCallback, useMemo } from 'react';
 import { Instance, types, flow } from "mobx-state-tree";
 import { observer } from 'mobx-react-lite';
-import { values } from 'mobx'
+import { values } from 'mobx';
 import styles from './index.module.less';
 import { Button, Form, Input, Space, Table } from 'antd';
 import { connectReduxDevtools } from 'mst-middlewares';
@@ -49,7 +49,7 @@ const store = UserStore.create({
   }
 })
 
-connectReduxDevtools(require("remotedev"), store);
+// connectReduxDevtools(require("remotedev"), store);
 
 
 function Users(props: any): JSX.Element {
