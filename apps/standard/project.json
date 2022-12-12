@@ -55,7 +55,7 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "standard:build",
-        "hmr": true,
+        "hmr": false,
         "port": 7001
       },
       "configurations": {
