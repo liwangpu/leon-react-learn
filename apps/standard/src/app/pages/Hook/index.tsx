@@ -16,7 +16,7 @@ const Hook: React.FC = memo(() => {
         {/* <button onClick={test}>切换标题</button> */}
       </div>
       <div className={styles['content']}>
-
+        <p>hook work</p>
       </div>
     </div>
   );
