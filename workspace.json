@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "mst": "apps/mst",
+    "shared": "libs/shared",
     "standard": "apps/standard"
   }
 }

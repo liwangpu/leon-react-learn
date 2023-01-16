@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
-import App from './app/app';
+import App from './app';
 
 const Hook = React.lazy(() => import('./app/pages/Hook'));
 const HOC = React.lazy(() => import('./app/pages/HOC'));
@@ -25,9 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'hook',
-        element: (
-            <Hook />
-        ),
+        element: WrapperSuspense(Hook)
       },
       {
         path: 'hoc',

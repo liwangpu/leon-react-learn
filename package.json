@@ -5,8 +5,7 @@
   "scripts": {
     "start:standard": "nx run standard:serve",
     "start:mst": "nx run mst:serve",
-    "start:s":"yarn run start:standard",
-    "start:m":"yarn run start:mst",
+    "start":"yarn run start:standard",
     "build": "nx build",
     "test": "nx test"
   },
