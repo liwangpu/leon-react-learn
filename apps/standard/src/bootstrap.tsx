@@ -9,6 +9,7 @@ const HOC = React.lazy(() => import('./app/pages/HOC'));
 const Context = React.lazy(() => import('./app/pages/Context'));
 const LifeCycle = React.lazy(() => import('./app/pages/LifeCycle'));
 const Refs = React.lazy(() => import('./app/pages/Refs'));
+const EventTransfer = React.lazy(() => import('./app/pages/EventTransfer'));
 
 function WrapperSuspense(WrappedComponent: React.ComponentType) {
   return (
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: 'life-cycle',
         element: WrapperSuspense(LifeCycle)
+      },
+      {
+        path: 'event-transfer',
+        element: WrapperSuspense(EventTransfer)
       },
       {
         index: true,

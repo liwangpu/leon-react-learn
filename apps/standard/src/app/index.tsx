@@ -25,6 +25,10 @@ const App: React.FC = memo(() => {
       title: 'Refs',
       path: '/app/refs'
     },
+    {
+      title: '事件模拟传递',
+      path: '/app/event-transfer'
+    },
   ]), []);
 
   return (
