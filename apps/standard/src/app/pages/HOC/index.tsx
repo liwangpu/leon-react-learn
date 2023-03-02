@@ -6,13 +6,7 @@ const HOC: React.FC = memo(() => {
 
   return (
     <div className={styles['hoc']}>
-      <div className={styles['container']}>
-        <div className={styles['box']}>
-          <div className={styles['menu']}></div>
-        </div>
-        <div className={styles['box']}>2</div>
-        <div className={styles['box']}>3</div>
-      </div>
+
     </div>
   );
 });
