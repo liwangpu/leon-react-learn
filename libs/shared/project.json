@@ -1,4 +1,5 @@
 {
+  "name": "shared",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/src",
   "projectType": "library",
@@ -11,12 +12,24 @@
         "lintFilePatterns": ["libs/shared/**/*.{ts,tsx,js,jsx}"]
       }
     },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/shared"],
+    "build": {
+      "executor": "@nrwl/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "jestConfig": "libs/shared/jest.config.ts",
-        "passWithNoTests": true
+        "outputPath": "dist/libs/shared",
+        "tsConfig": "libs/shared/tsconfig.lib.json",
+        "project": "libs/shared/package.json",
+        "entryFile": "libs/shared/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/shared/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
     }
   }

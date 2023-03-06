@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import styles from './index.module.less';
-import { Button } from 'antd';
 
 const HOC: React.FC = memo(() => {
 
@@ -11,7 +10,7 @@ const HOC: React.FC = memo(() => {
   return (
     <div className={styles['page']}>
       <div className={styles['page__header']}>
-        <Button onClick={handleTest}>测试</Button>
+        {/* <Button onClick={handleTest}>测试</Button> */}
       </div>
       <div className={styles['page__content']}>
 

@@ -13,22 +13,6 @@ const App: React.FC = memo(() => {
       title: 'HOC',
       path: '/app/hoc',
     },
-    {
-      title: 'Context',
-      path: '/app/context'
-    },
-    {
-      title: '生命周期',
-      path: '/app/life-cycle'
-    },
-    {
-      title: 'Refs',
-      path: '/app/refs'
-    },
-    {
-      title: '事件模拟传递',
-      path: '/app/event-transfer'
-    },
   ]), []);
 
   return (
