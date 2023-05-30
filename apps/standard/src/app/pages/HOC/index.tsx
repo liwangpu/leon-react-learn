@@ -2,16 +2,23 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styles from './index.module.less';
 
-const HOC: React.FC = observer(() => {
+const Page: React.FC = observer(() => {
 
   return (
     <div className={styles['page']}>
 
+      <div className={styles['page__header']}>
+
+      </div>
+
+      <div className={styles['page__content']}>
+
+      </div>
     </div>
   );
 });
 
-HOC.displayName = 'HOC';
+Page.displayName = 'Page';
 
-export default HOC;
+export default Page;
 

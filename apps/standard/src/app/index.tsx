@@ -13,6 +13,10 @@ const App: React.FC = memo(() => {
       title: 'HOC',
       path: '/app/hoc',
     },
+    {
+      title: 'MST Store',
+      path: '/app/mst-store',
+    },
   ]), []);
 
   return (

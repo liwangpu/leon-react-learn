@@ -6,6 +6,7 @@ import App from './app';
 
 const Hook = React.lazy(() => import('./app/pages/Hook'));
 const HOC = React.lazy(() => import('./app/pages/HOC'));
+const MSTStore = React.lazy(() => import('./app/pages/MSTStore'));
 
 function WrapperSuspense(WrappedComponent: React.ComponentType) {
   return (
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'hoc',
         element: WrapperSuspense(HOC)
+      },
+      {
+        path: 'mst-store',
+        element: WrapperSuspense(MSTStore)
       },
       {
         index: true,

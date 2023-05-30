@@ -1,12 +1,34 @@
 import { Button } from 'antd';
 import { observer } from 'mobx-react-lite';
+import { Instance, types } from 'mobx-state-tree';
 import React from 'react';
 import styles from './index.module.less';
+import { faker } from '@faker-js/faker';
+
+const StudentModel = types.model({
+  id: types.string,
+  name: types.string,
+  age: types.number,
+})
+  .actions(self => ({
+    setName(name: string) {
+      self.name = name;
+    }
+  }));
+
+type Student = Instance<typeof StudentModel>;
+
+const stu = StudentModel.create({
+  id: 'a',
+  name: '毛毛',
+  age: 12,
+});
+
 
 const Page: React.FC = observer(() => {
 
   const test = () => {
-
+    stu.setName(faker.name.findName());
   };
 
   return (
@@ -17,6 +39,8 @@ const Page: React.FC = observer(() => {
       </div>
 
       <div className={styles['page__content']}>
+
+        <p>姓名: {stu.name}</p>
 
       </div>
 
