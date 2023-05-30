@@ -1,65 +1,28 @@
-// import { Button } from 'antd';
-import React, { memo, useEffect, useLayoutEffect, useState } from 'react';
+import { Button } from 'antd';
+import { observer } from 'mobx-react-lite';
+import React from 'react';
 import styles from './index.module.less';
 
-const Hook: React.FC = memo(() => {
 
-  const [val, setVal] = useState<boolean>();
+const Hook: React.FC = observer(() => {
 
-  const handleTest = () => {
-    setVal(true);
+  const test = () => {
+
   };
 
-  useLayoutEffect(() => {
-    console.log(`hook layout`,);
-  }, []);
-
-
-  useEffect(() => {
-    console.log(`hook effect`,);
-  }, []);
 
   return (
     <div className={styles['page']}>
-      <div className={styles['page__header']}>
-        {/* <Button onClick={handleTest}>测试</Button> */}
-      </div>
+
       <div className={styles['page__content']}>
-        {val && <SimpleComponent />}
+        <Button onClick={test}>测试</Button>
       </div>
+
     </div>
   );
 });
 
 Hook.displayName = 'Hook';
 
-
-const SimpleComponent: React.FC = memo(props => {
-
-  const [val, setVal] = useState<boolean>();
-
-  useLayoutEffect(() => {
-    console.log(`simple layout`,);
-  }, []);
-
-  useEffect(() => {
-    console.log(`simple effect`,);
-    (async () => {
-      setTimeout(() => {
-        setVal(true);
-      }, 2000);
-    })();
-  }, []);
-
-  return (
-    <div>
-      {val && (
-        <div>天天开心</div>
-      )}
-    </div>
-  );
-});
-
-SimpleComponent.displayName = 'SimpleComponent';
-
 export default Hook;
+
