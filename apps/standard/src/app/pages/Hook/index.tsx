@@ -3,13 +3,11 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styles from './index.module.less';
 
-
 const Hook: React.FC = observer(() => {
 
   const test = () => {
 
   };
-
 
   return (
     <div className={styles['page']}>

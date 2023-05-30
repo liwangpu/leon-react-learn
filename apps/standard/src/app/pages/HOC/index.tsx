@@ -1,8 +1,8 @@
-import { Button } from 'antd';
-import React, { memo, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import React from 'react';
 import styles from './index.module.less';
 
-const HOC: React.FC = memo(() => {
+const HOC: React.FC = observer(() => {
 
   return (
     <div className={styles['page']}>
