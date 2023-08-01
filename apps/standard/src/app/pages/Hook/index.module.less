@@ -21,3 +21,27 @@
   }
 
 }
+
+.section {
+  position: relative;
+  width: 510px;
+  height: 300px;
+  // border: 1px solid #cacdd1;
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #cacdd1;
+  // overflow: hidden;
+
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.box {
+  // position: absolute;
+  @s: 250px;
+  width: @s;
+  height: @s;
+  flex: 0 0 @s;
+  background-color: orange;
+  border: 1px solid #cacdd1;
+}

@@ -4,6 +4,11 @@ import { Instance, types } from 'mobx-state-tree';
 import React from 'react';
 import styles from './index.module.less';
 import { faker } from '@faker-js/faker';
+import { connectReduxDevtools } from 'mst-middlewares';
+
+const hostingStore = (store: any) => {
+  connectReduxDevtools(require("remotedev"), store);
+};
 
 const StudentModel = types.model({
   id: types.string,
@@ -24,6 +29,8 @@ const stu = StudentModel.create({
   age: 12,
 });
 
+
+hostingStore(stu);
 
 const Page: React.FC = observer(() => {
 
