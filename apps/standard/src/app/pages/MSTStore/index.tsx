@@ -5,6 +5,7 @@ import React from 'react';
 import styles from './index.module.less';
 import { faker } from '@faker-js/faker';
 import { connectReduxDevtools } from 'mst-middlewares';
+import { SimplePage } from '@react-learn/shared';
 
 const hostingStore = (store: any) => {
   connectReduxDevtools(require("remotedev"), store);
@@ -39,19 +40,28 @@ const Page: React.FC = observer(() => {
   };
 
   return (
-    <div className={styles['page']}>
+    // <div className={styles['page']}>
 
-      <div className={styles['page__header']}>
+    //   <div className={styles['page__header']}>
+    //     <Button onClick={test}>测试</Button>
+    //   </div>
+
+    //   <div className={styles['page__content']}>
+
+    //     <p>姓名: {stu.name}</p>
+
+    //   </div>
+
+    // </div>
+
+    <SimplePage header={(
+      <>
         <Button onClick={test}>测试</Button>
-      </div>
+      </>
+    )} >
 
-      <div className={styles['page__content']}>
-
-        <p>姓名: {stu.name}</p>
-
-      </div>
-
-    </div>
+      <p>姓名: {stu.name}</p>
+    </SimplePage>
   );
 });
 
