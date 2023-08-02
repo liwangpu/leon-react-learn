@@ -5,6 +5,7 @@ import React from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { HomeOutlined, LeftOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 export interface INavItem {
   title: string;
@@ -33,6 +34,10 @@ export const SimpleNavsPage: React.FC<IPageOperationProps> = memo(props => {
   }, [props.routes]);
 
   const [collapsed, setCollapsed] = useState<boolean>(localStorage.getItem(SIMPLE_NAV_COLLAPSED_STATE) === 'true');
+  useHotkeys('tab', (evt) => {
+    setCollapsed(!collapsed);
+    evt.preventDefault();
+  }, [collapsed])
 
   const toggleCollapse = () => {
     const state = !collapsed;
