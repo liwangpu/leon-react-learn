@@ -14,6 +14,10 @@ const App: React.FC = memo(() => {
       path: '/app/hoc',
     },
     {
+      title: 'MST',
+      path: '/app/mst',
+    },
+    {
       title: 'MST Store',
       path: '/app/mst-store',
     },
