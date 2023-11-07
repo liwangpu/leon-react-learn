@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 import { observer } from 'mobx-react-lite';
-import { Instance, types } from 'mobx-state-tree';
+import { Instance, types, getSnapshot } from 'mobx-state-tree';
 import React from 'react';
 import styles from './index.module.less';
 import { faker } from '@faker-js/faker';
@@ -11,74 +11,41 @@ const hostingStore = (store: any) => {
   connectReduxDevtools(require("remotedev"), store);
 };
 
-const StudentModel = types.model({
-  id: types.string,
-  name: types.string,
-  age: types.number,
-})
-  .views(self => ({
-    get nickName() {
-      console.log(`generate nick name!`,);
-      return `Mr. ${self.name}`;
-    }
-  }))
-  .actions(self => ({
-    setName(name: string) {
-      self.name = name;
-    }
-  }));
-
-type Student = Instance<typeof StudentModel>;
-
-const stu = StudentModel.create({
-  id: 'a',
-  name: '毛毛',
-  age: 12,
-});
-
-
 // hostingStore(stu);
 
+const AT = types.model({
+  id: types.maybeNull(types.string),
+  name: types.maybeNull(types.string),
+});
+
+const BT = types.model({
+  remark: types.maybeNull(types.string),
+});
+
+const CT = types.compose(AT, BT);
 
 
-// console.log(`stu name:`,stu.nickName);
-// console.log(`stu name:`,stu.nickName);
-// console.log(`stu name:`,stu.nickName);
+const store = CT.create({
 
+});
+
+hostingStore(store);
 
 const Page: React.FC = observer(() => {
 
   const test = () => {
-    stu.setName(faker.name.fullName());
+    // store.active('a');
+
+    // console.log(`store:`, getSnapshot(store));
   };
 
   return (
-    // <div className={styles['page']}>
-
-    //   <div className={styles['page__header']}>
-    //     <Button onClick={test}>测试</Button>
-    //   </div>
-
-    //   <div className={styles['page__content']}>
-
-    //     <p>姓名: {stu.name}</p>
-
-    //   </div>
-
-    // </div>
-
     <SimplePage header={(
       <>
         <Button onClick={test}>测试</Button>
       </>
     )} >
 
-
-      {/* <SimpleComponent />
-      <SimpleComponent />
-      <SimpleComponent /> */}
-      {/* <p>姓名: {stu.nickName}</p>
-      <p>姓名: {stu.nickName}</p> */}
     </SimplePage>
   );
 });
@@ -86,15 +53,3 @@ const Page: React.FC = observer(() => {
 Page.displayName = 'Page';
 
 export default Page;
-
-const SimpleComponent: React.FC = observer(props => {
-
-  return (
-    <div>
-      {stu.nickName}
-    </div>
-  );
-});
-
-SimpleComponent.displayName = 'SimpleComponent';
-
