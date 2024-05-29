@@ -7361,20 +7361,22 @@ mkdirp@^0.5.6:
   dependencies:
     minimist "^1.2.6"
 
-mobx-react-lite@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.npmmirror.com/mobx-react-lite/-/mobx-react-lite-3.4.2.tgz#6604beb842405f47175ae69448d3fac5de6e00ad"
-  integrity sha512-wOFI6qhMBucYNy00aSDoee23L2//wKYJp4z5k+YOhOCY303prwLaWiEhJU0H2c//oIEEswGqUHtVV2qptk/g5g==
+mobx-react-lite@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.npmmirror.com/mobx-react-lite/-/mobx-react-lite-4.0.7.tgz#f4e21e18d05c811010dcb1d3007e797924c4d90b"
+  integrity sha512-RjwdseshK9Mg8On5tyJZHtGD+J78ZnCnRaxeQDSiciKVQDUbfZcXhmld0VMxAwvcTnPEHZySGGewm467Fcpreg==
+  dependencies:
+    use-sync-external-store "^1.2.0"
 
-mobx-state-tree@^5.1.7:
-  version "5.1.7"
-  resolved "https://registry.npmmirror.com/mobx-state-tree/-/mobx-state-tree-5.1.7.tgz#248cedddd012047d8d9b4a3c2fc2abb19ca25c62"
-  integrity sha512-XW19rasJLmbmiSVMMGjwZGUvwLvfuwuhjLJK56dSXUb3Mny3s4pb6THfpqTPu1P/D+A9o0C0u8EsYW5S71YO8Q==
+mobx-state-tree@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmmirror.com/mobx-state-tree/-/mobx-state-tree-6.0.0.tgz#c2a48246761b189c1789989b73d0017e9f05da44"
+  integrity sha512-Aky3I5SMM1gKvI780TyxqSf+VDRpu03QONxqGerXG7DOemK3z1Ka2KfbPuiXm/znawsYDwqeZgmz0rjbCLSD8g==
 
-mobx@^6.8.0:
-  version "6.8.0"
-  resolved "https://registry.npmmirror.com/mobx/-/mobx-6.8.0.tgz#59051755fdb5c8a9f3f2e0a9b6abaf86bab7f843"
-  integrity sha512-+o/DrHa4zykFMSKfS8Z+CPSEg5LW9tSNGTuN8o6MF1GKxlfkSHSeJn5UtgxvPkGgaouplnrLXCF+duAsmm6FHQ==
+mobx@^6.12.3:
+  version "6.12.3"
+  resolved "https://registry.npmmirror.com/mobx/-/mobx-6.12.3.tgz#b6a0fde4268116be602d50bffb32f1b90a8fb077"
+  integrity sha512-c8NKkO4R2lShkSXZ2Ongj1ycjugjzFFo/UswHBnS62y07DMcTc9Rvo03/3nRyszIvwPNljlkd4S828zIBv/piw==
 
 ms@2.0.0:
   version "2.0.0"
@@ -7391,10 +7393,10 @@ ms@2.1.3, ms@^2.1.1:
   resolved "https://registry.npmmirror.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-mst-middlewares@^5.1.7:
-  version "5.1.7"
-  resolved "https://registry.npmmirror.com/mst-middlewares/-/mst-middlewares-5.1.7.tgz#d18bccc8dea9d26431c95d1d4de79396557f9d60"
-  integrity sha512-qLP/Z3HCKtF8EGivt1Niqm17MNE0ehWuE/RlJMQIMbq9oQDoxJRGqmq8bM7hHuSlMzwLfvN0wOnO+VAR20GXPQ==
+mst-middlewares@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmmirror.com/mst-middlewares/-/mst-middlewares-6.0.0.tgz#0429070f85b54bba0c944ddabca0373c5fae8ec7"
+  integrity sha512-5KkpNsnZT6J+1v4jiVl5NZq9Mle9n3wgvzOXX/EfMCTuJQa/wsMwf5jmukx26qgy7OcT+aHENPkV42IEeoMmfw==
 
 multicast-dns@^7.2.5:
   version "7.2.5"
@@ -9946,6 +9948,11 @@ url-parse@^1.5.3:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
+
+use-sync-external-store@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.npmmirror.com/use-sync-external-store/-/use-sync-external-store-1.2.2.tgz#c3b6390f3a30eba13200d2302dcdf1e7b57b2ef9"
+  integrity sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
