@@ -15,6 +15,7 @@ const generateNickName = () => {
 };
 
 const hostingStore = (store: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   connectReduxDevtools(require("remotedev"), store);
 };
 
